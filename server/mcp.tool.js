@@ -9,25 +9,6 @@ const twitterClient = new TwitterApi({
   accessSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
 });
 
-const client = new TwitterApi({
-  appKey: process.env.TWITTER_API_KEY,
-  appSecret: process.env.TWITTER_API_SECRET,
-  accessToken: process.env.TWITTER_ACCESS_TOKEN,
-  accessSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
-});
-
-// ✅ Then use it in your test function
-async function testTweet() {
-  try {
-    const res = await client.v2.tweet("Testing tweet from API");
-    console.log("✅ Success:", res);
-  } catch (err) {
-    console.error("❌ Error:", err);
-  }
-}
-
-testTweet();
-
 export async function createPost(status) {
   const newPost = await twitterClient.v2.tweet(status);
 
